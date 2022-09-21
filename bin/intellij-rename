@@ -1,0 +1,5 @@
+#! /bin/bash
+# Utility Script for setting IntelliJ project names so that e.g. window-resising
+# program can find the windows
+# Run from the root of the project 
+echo Intellij >	.idea/.name

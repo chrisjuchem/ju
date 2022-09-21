@@ -1,0 +1,50 @@
+#!/bin/bash
+
+export PATH=$PATH:$HOME/ju/bin
+
+alias spotify='nohup /var/lib/snapd/snap/bin/spotify &> /dev/null &'
+alias intellij='nohup $HOME/intellij/bin/idea.sh &> /dev/null &'
+
+alias c="tput reset"
+
+alias curl='f(){ curl "$@"; echo; unset -f f; }; f'
+alias curla='curl -H "Authorization: Bearer $TOKEN"'
+alias curlj='curl -H "Content-Type: application/json"'
+alias curlaj='curla -H "Content-Type: application/json"'
+
+alias jsonfrmt="python -m json.tool"
+alias jf="jsonfrmt"
+port () {
+    lsof -i tcp:${1}
+}
+
+# Set pager for PSQL
+export PAGER="less --quit-if-one-screen --no-init"
+export EDITOR="vim"
+
+alias grep='grep --color=auto'
+alias ls='ls --color=auto'
+alias ll='ls -alF'
+alias la='ls -A'
+#alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+
+parse_git_branch() {
+     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/:\1/'
+}
+#PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u \[\033[01;34m\]\W\[\033[01;35m\]$(parse_git_branch)\[\033[00m\]\$ '
+
+# If set, the pattern "**" used in a pathname expansion context will
+# match all files and zero or more directories and subdirectories.
+shopt -s globstar
+
+# don't put duplicate lines or lines starting with space in the history.
+# See bash(1) for more options
+#HISTCONTROL=ignoreboth
+
+
+if [ -f "$HOME/.bash-git-prompt/gitprompt.sh" ]; then
+    # export GIT_PROMPT_ONLY_IN_REPO=1
+    # export GIT_PROMPT_FETCH_REMOTE_STATUS=0   # uncomment to avoid fetching remote status
+    export GIT_PROMPT_THEME=Single_line
+    source $HOME/.bash-git-prompt/gitprompt.sh
+fi
