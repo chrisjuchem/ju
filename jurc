@@ -6,6 +6,7 @@ alias spotify='nohup /var/lib/snapd/snap/bin/spotify &> /dev/null &'
 alias intellij='nohup $HOME/intellij/bin/idea.sh &> /dev/null &'
 
 alias c="tput reset"
+alias sus="systemctl suspend"
 
 alias curl='f(){ curl "$@"; echo; unset -f f; }; f'
 alias curla='curl -H "Authorization: Bearer $TOKEN"'
@@ -16,6 +17,13 @@ alias jsonfrmt="python -m json.tool"
 alias jf="jsonfrmt"
 port () {
     lsof -i tcp:${1}
+}
+
+hd () {
+  hexdump -C $1 | less
+}
+hdg () {
+  hexdump -C $1 | grep "${@:2}"
 }
 
 # Set pager for PSQL
