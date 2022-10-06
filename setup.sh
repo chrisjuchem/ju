@@ -31,6 +31,7 @@ git config --global alias.home "!git checkout \$(git defbranch) && git pull"
 git config --global alias.tree "log --oneline --all --graph --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(red)- %an%C(reset)%C(bold yellow)%d%C(reset)'"
 git config --global rebase.autosquash true
 git config --global grep.lineNumber true
-git config --global core.excludesFile ${JU_DIR}/.gitignore-global
+git config --global core.excludesFile ${JU_DIR}/git/.gitignore-global
+git config --global core.hooksPath ${JU_DIR}/git/hooks-global
 
 echo -e "${PURPLE}Done!${RESET}"
