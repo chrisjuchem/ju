@@ -2,8 +2,12 @@
 
 export PATH=$PATH:$HOME/ju/bin
 
-alias spotify='nohup /var/lib/snapd/snap/bin/spotify &> /dev/null &'
-alias intellij='nohup $HOME/intellij/bin/idea.sh &> /dev/null &'
+# Launch programs
+start () {
+  nohup "$@" &> /dev/null & disown
+}
+alias spotify='start /var/lib/snapd/snap/bin/spotify'
+alias intellij='start $HOME/intellij/bin/idea.sh'
 
 alias c="tput reset"
 alias sus="systemctl suspend"
