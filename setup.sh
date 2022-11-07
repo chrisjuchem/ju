@@ -21,6 +21,7 @@ if [ ! -d ~/.bash-git-prompt ]; then
 else
   echo -e "${PURPLE}bash-git-prompt already installed...${RESET}"
 fi
+cp ${JU_DIR}/.git-prompt-colors.sh $HOME
 
 echo -e "${PURPLE}Configuring git...${RESET}"
 git config --global alias.cln "!f() { git fetch --prune; echo '\"git clnd\" will delete:'; git branch -vv | grep 'origin/.*: gone]' | awk '{print \$1}'; }; f"
