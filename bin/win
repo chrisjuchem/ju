@@ -1,7 +1,12 @@
 #!/bin/sh
-set -x
+
 echo "Resizing editors..."
 for wid in $(xdotool search --name IntelliJ); do
   xdotool windowmove $wid 0 0
-  xdotool windowsize $wid 1047 1080
+  xdotool windowsize $wid 1048 1042
 done
+
+# not picked up by xdotool :(
+#echo "Resizing terminal..."
+#t=$(xdotool search --name chrisjuchem@cjuchem)
+#xdotool windowsize $t 500 500
