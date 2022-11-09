@@ -26,6 +26,7 @@ cp ${JU_DIR}/.git-prompt-colors.sh $HOME
 echo -e "${PURPLE}Configuring git...${RESET}"
 git config --global alias.cln "!f() { git fetch --prune; echo '\"git clnd\" will delete:'; git branch -vv | grep 'origin/.*: gone]' | awk '{print \$1}'; }; f"
 git config --global alias.clnd "!f() { git fetch --prune; git branch -vv | grep 'origin/.*: gone]' | awk '{print \$1}' | xargs git branch -D; }; f"
+git config --global alias.bonk "push -u origin HEAD"
 git config --global alias.defbranch "!git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@'"
 git config --global alias.rbdef "!git fetch && git rebase origin/\$(git defbranch) -i"
 git config --global alias.home "!git checkout \$(git defbranch) && git pull"
