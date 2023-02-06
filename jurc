@@ -17,6 +17,8 @@ alias curla='curl -H "Authorization: Bearer $TOKEN"'
 alias curlj='curl -H "Content-Type: application/json"'
 alias curlaj='curla -H "Content-Type: application/json"'
 
+alias gg='git grep'
+
 alias jsonfrmt="python -m json.tool"
 alias jf="jsonfrmt"
 port () {
@@ -29,6 +31,8 @@ hd () {
 hdg () {
   hexdump -C $1 | grep "${@:2}"
 }
+
+alias cargo-macro='RUSTFLAGS="-Z macro-backtrace" cargo +nightly'
 
 # Set pager for PSQL
 export PAGER="less --quit-if-one-screen --no-init"
