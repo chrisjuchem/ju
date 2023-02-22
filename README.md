@@ -44,3 +44,13 @@ are reflecetd in the next shell opened even without running `setup.sh` again.
 
 Directory containing executables. Added to $PATH by `jurc`.
 
+### `git`
+
+Directory containing files for global git configuration. Instead of copying them
+or moving them, `git` is pointed directly to the files in this directory.
+
+### `.vimrc`
+
+Vim configuration. A symlink to this file is created in the home directory. It will
+overwrite any existing configuration (saving a copy in `.vimrc.old`).
+
