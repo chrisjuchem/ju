@@ -14,6 +14,10 @@ echo -e "${PURPLE}Installing rc files...${RESET}"
 mkdir -p ~/.bashrc.d
 echo source ${JU_DIR}/jurc > ~/.bashrc.d/ju
 
+mv ~/.vimrc ~/.vimrc.old
+ln -s ${JU_DIR}/.vimrc ~/.vimrc
+
+
 
 if [ ! -d ~/.bash-git-prompt ]; then
   echo -e "${PURPLE}Installing bash-git-prompt...${RESET}"
@@ -28,7 +32,7 @@ git config --global alias.cln "!f() { git fetch --prune; echo '\"git clnd\" will
 git config --global alias.clnd "!f() { git fetch --prune; git branch -vv | grep 'origin/.*: gone]' | awk '{print \$1}' | xargs git branch -D; }; f"
 git config --global alias.bonk "push -u origin HEAD"
 git config --global alias.defbranch "!git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@'"
-git config --global alias.rb "rebase $(git merge-base HEAD origin/HEAD) -i"
+git config --global alias.rb "rebase \$(git merge-base HEAD origin/HEAD) -i"
 git config --global alias.rbdef "!git fetch && git rebase origin/\$(git defbranch) -i"
 git config --global alias.home "!git checkout \$(git defbranch) && git pull"
 git config --global alias.tree "log --oneline --all --graph --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(red)- %an%C(reset)%C(bold yellow)%d%C(reset)'"
