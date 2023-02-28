@@ -14,7 +14,7 @@ echo -e "${PURPLE}Installing rc files...${RESET}"
 mkdir -p ~/.bashrc.d
 echo source ${JU_DIR}/jurc > ~/.bashrc.d/ju
 
-mv ~/.vimrc ~/.vimrc.old
+[ -f ~/.vimrc ] && mv ~/.vimrc ~/.vimrc.old
 ln -s ${JU_DIR}/.vimrc ~/.vimrc
 
 
