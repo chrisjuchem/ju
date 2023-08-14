@@ -7,19 +7,24 @@ set smarttab
 set shiftwidth=2
 set tabstop=2
 
- "" Shift+Tab to insert an actual tab
-imap <S-Tab> <Esc>:set noexpandtab<CR><Right>i<Tab><Esc>:set expandtab<CR><Right>i
-
 set list
 set listchars=tab:──▶,trail:·
+
+"" Shift+Tab to insert an actual tab
+imap <S-Tab> <C-O>:set noexpandtab<CR><Tab><C-O>:set expandtab<CR>
 
 " Cursor
 
 set whichwrap+=<,>,h,l,[,]
 set ve=onemore
 
-imap <C-Right> <C-o>e<Right>
+"" move past last line
+noremap <expr> <DOWN> (line('.') == line('$') && col("$") > 1) ? 'o<Esc>' : '<DOWN>'
+inoremap <expr> <DOWN> (line('.') == line('$') && col("$") > 1) ? '<C-o>o' : '<DOWN>'
+
+"" word jumping
 map <C-Right> e<Right>
+imap <C-Right> <C-o>e<Right>
 map <C-Left> b
 imap <C-Left> <C-o>b
 
@@ -27,3 +32,4 @@ imap <C-Left> <C-o>b
 
 set number
 :hi LineNr none
+
