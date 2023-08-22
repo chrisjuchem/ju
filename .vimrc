@@ -1,5 +1,8 @@
 " for more https://github.com/amix/vimrc/blob/master/vimrcs/basic.vim
 
+set encoding=utf-8
+scriptencoding utf-8
+
 " Tabs & Whitespace
 
 set expandtab
@@ -19,8 +22,8 @@ set whichwrap+=<,>,h,l,[,]
 set ve=onemore
 
 "" move past last line
-noremap <expr> <DOWN> (line('.') == line('$') && col("$") > 1) ? 'o<Esc>' : '<DOWN>'
-inoremap <expr> <DOWN> (line('.') == line('$') && col("$") > 1) ? '<C-o>o' : '<DOWN>'
+noremap <expr> <DOWN> (line('.') == line('$') && col("$") > 1) ? '$<Right>' : '<DOWN>'
+inoremap <expr> <DOWN> (line('.') == line('$') && col("$") > 1) ? '<C-O>$' : '<DOWN>'
 
 "" word jumping
 map <C-Right> e<Right>
@@ -32,4 +35,3 @@ imap <C-Left> <C-o>b
 
 set number
 :hi LineNr none
-
