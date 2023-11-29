@@ -2,11 +2,18 @@
 
 echo "Resizing editors..."
 for wid in $(xdotool search --name IntelliJ); do
-  xdotool windowmove $wid 0 0
-  xdotool windowsize $wid 1048 1042
+  xdotool windowmove $wid 1920 600
+  xdotool windowsize $wid 1038 1080
 done
 
 # not picked up by xdotool :(
 #echo "Resizing terminal..."
 #t=$(xdotool search --name chrisjuchem@cjuchem)
 #xdotool windowsize $t 500 500
+
+
+echo "Moving Browser..."
+wmctrl -r " - Google Chrome" -b remove,maximized_horz,maximized_vert
+wmctrl -r " - Google Chrome" -e 0,0,0,1024,720
+wmctrl -r " - Google Chrome" -b add,maximized_horz,maximized_vert
+

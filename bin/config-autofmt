@@ -1,0 +1,13 @@
+#! /bin/bash
+# Utility script for automatically setting rust auto format settings in intellij
+# Run from the root of the project
+[ -d .idea ] || mkdir .idea
+echo << EOF >	.idea/workspace.xml
+<?xml version="1.0" encoding="UTF-8"?>
+  <project version="4">
+  <component name="RustfmtProjectSettings">
+    <option name="runRustfmtOnSave" value="true" />
+  </component>
+</project>
+EOF
+
