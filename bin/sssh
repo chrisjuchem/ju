@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+# Utility to automatically establish an ssh connection once it's available.
+
+# For ssh completions, create a file at /usr/share/bash-completion/completions/sssh
+# with the following contents:
+
+# . /usr/share/bash-completion/completions/ssh;
+# complete -F _ssh sssh
+
+target=$1
+
+while ! ssh -o ConnectTimeout=2 "$target" -C true ; do
+  sleep 2
+done
+
+ssh "$@"
+
