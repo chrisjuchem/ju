@@ -65,3 +65,7 @@ if [ -f "$HOME/.bash-git-prompt/gitprompt.sh" ]; then
     export GIT_PROMPT_THEME=Custom  # ~/.git-prompt-colors.sh
     source $HOME/.bash-git-prompt/gitprompt.sh
 fi
+prompt_callback() {
+    gp_set_window_title "${PathShort}"
+}
+
