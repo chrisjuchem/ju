@@ -42,7 +42,7 @@ git config --global rebase.autosquash true
 git config --global grep.lineNumber true
 git config --global core.excludesFile ${JU_DIR}/git/.gitignore-global
 git config --global core.hooksPath ${JU_DIR}/git/hooks-global
-#git config --global submodule.recurse true
+git config --global submodule.recurse true
 git config --global init.defaultBranch main
 
 echo -e "${PURPLE}Done!${RESET}"
