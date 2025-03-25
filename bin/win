@@ -10,29 +10,34 @@ __maximize_on_laptop () {
 	wmctrl -r $1 -b add,maximized_horz,maximized_vert
 }
 
+
 wmctrl -r " - Google Chrome" -b remove,maximized_horz,maximized_vert
 wmctrl -r " - Google Chrome" -e 0,9192,800,3850,2000
 wmctrl -r " - Google Chrome" -b add,maximized_horz,maximized_vert
+echo Chrome
+sleep 0.2
 
 
 #try to grab the right chrome window
 __maximize_on_laptop " Mail - "
+__maximize_on_laptop "Inbox ("
 __maximize_on_laptop " - Calendar - "
-__maximize_on_laptop " - Chat - "
-__maximize_on_laptop " - Google Drive - "
+__maximize_on_laptop " - Chat"
+#__maximize_on_laptop " - Google Drive - "
 
 
-__maximize_on_laptop Postman
-__maximize_on_laptop Spotify
-__maximize_on_laptop Slack
+#__maximize_on_laptop Postman
+#__maximize_on_laptop Spotify
+#__maximize_on_laptop Slack
+
 
 wmctrl -r ":ACTIVE:" -b remove,maximized_horz,maximized_vert
-wmctrl -r ":ACTIVE:" -e 0,4059,0,2372,2748
-wmctrl -r ":ACTIVE:" -b add,maximized_vert
+wmctrl -r ":ACTIVE:" -e 0,4060,0,2372,2748
+#wmctrl -r ":ACTIVE:" -b add,maximized_vert
 echo Terminal
 
 wmctrl -r "- Visual Studio Code" -b remove,maximized_horz,maximized_vert
-wmctrl -r "- Visual Studio Code" -e 0,6392,0,2824,2748
+wmctrl -r "- Visual Studio Code" -e 0,6392,0,2824,2648
 echo IDE
 
 echo Windows adjusted!
