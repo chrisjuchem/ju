@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+
+if [ -z "${1}" ] ; then
+  echo "Must provide a sha to cherry-pick"
+  exit 1
+fi
+if [ -z "${2}" ] ; then
+  echo "Must provide a Feature Name"
+  exit 2
+fi
+
+set -xe
+
+sha="${1}"
+shift
+feature="${@}"
+
+branch="juchem/cherry-pick-${sha}"
+echo "set release branch and remove me" && exit 1
+basebranch="release/"
+
+git checkout "${basebranch}"
+git pull
+git checkout -b "${branch}"
+git cherry-pick -x "${sha}"
+git commit --amend -F <(git log --format="[cherry-pick][${feature}]%B" -n 1 ${sha})
+git push -u origin HEAD
+echo "set repo url and remove me" && exit 1
+xdg-open "https://github.com/org/repo/compare/${basebranch}...${branch}?expand=1&template=empty&labels="
+

@@ -1,0 +1,39 @@
+#!/usr/bin/env bash
+
+containerid="notarealid"
+logpid=""
+
+killLogPs() {
+  [ -z "$logpid" ] || kill ${logpid}
+  controlMsg exiting
+}
+trap killLogPs EXIT
+
+controlMsg() {
+  echo "
+##############################################
+#                                            #
+#  ${1}  #
+#                                            #
+##############################################
+" >&2
+}
+
+
+while true; do
+  currentid=$(docker ps -f "name=$1" -q)
+  if [ "$currentid" != "$containerid" ] ; then
+    containerid="$currentid"
+    if [ -z "$containerid" ] ; then
+      controlMsg "Detected shutdown. Waiting...           "
+      logpid=""
+    else
+      controlMsg "Attaching to new container: ${containerid}"
+      docker logs -f "$containerid" &
+      logpid=$!
+    fi
+  fi
+  sleep 5
+done
+
+
