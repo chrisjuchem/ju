@@ -27,9 +27,11 @@ fi
 " >> ~/.bashrc
 fi
 
-[ -f ~/.vimrc ] && mv ~/.vimrc ~/.vimrc.old
-ln -s ${JU_DIR}/.vimrc ~/.vimrc
-
+if [ ! -f ~/.vimrc.pre-ju ] ; then
+  [ -f ~/.vimrc ] || echo '" No .vimrc file was present during first ju install' > ~/.vimrc
+  mv ~/.vimrc ~/.vimrc.pre-ju
+fi
+[ -L ~/.vimrc ] || ln -s ${JU_DIR}/.vimrc ~/.vimrc
 
 
 if [ ! -d ~/.bash-git-prompt ]; then
