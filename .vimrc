@@ -22,8 +22,12 @@ set whichwrap+=<,>,h,l,[,]
 set ve=onemore
 
 "" move past last line
+""" <C-O> for commands inside insert mode
 noremap <expr> <DOWN> (line('.') == line('$') && col("$") > 1) ? '$<Right>' : '<DOWN>'
-inoremap <expr> <DOWN> (line('.') == line('$') && col("$") > 1) ? '<C-O>o' : '<DOWN>'
+inoremap <expr> <DOWN> (line('.') == line('$') && col("$") > 1) ? '<C-O>$' : '<DOWN>'
+"inoremap <expr> <DOWN> (line('.') == line('$') && col("$") > 1) ? '<C-O>o' : '<DOWN>'
+""" restore from last line, delete into black hole register
+"inoremap <expr> <UP> (line('.') == line('$') && col("$") == 1) ? '<C-O>"_dd' : '<UP>'
 
 "" word jumping
 map <C-Right> e<Right>
