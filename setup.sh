@@ -14,7 +14,7 @@ echo -e "${PURPLE}Installing rc files...${RESET}"
 mkdir -p ~/.bashrc.d
 echo source ${JU_DIR}/jurc > ~/.bashrc.d/ju
 if ! cat ~/.bashrc | grep \.bashrc\.d > /dev/null; then
-  echo "
+  echo '
 # Begin additions for ju
 if [ -d ~/.bashrc.d ]; then
     for rc in ~/.bashrc.d/*; do
@@ -24,7 +24,7 @@ if [ -d ~/.bashrc.d ]; then
     done
 fi
 # End additions for ju
-" >> ~/.bashrc
+' >> ~/.bashrc
 fi
 
 if [ ! -f ~/.vimrc.pre-ju ] ; then
