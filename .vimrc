@@ -23,7 +23,7 @@ set ve=onemore
 
 "" move past last line
 noremap <expr> <DOWN> (line('.') == line('$') && col("$") > 1) ? '$<Right>' : '<DOWN>'
-inoremap <expr> <DOWN> (line('.') == line('$') && col("$") > 1) ? '<C-O>$' : '<DOWN>'
+inoremap <expr> <DOWN> (line('.') == line('$') && col("$") > 1) ? '<C-O>o' : '<DOWN>'
 
 "" word jumping
 map <C-Right> e<Right>
