@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+if [ -z "$1" ] ; then
+  echo "error: Provide a host name to display"
+  exit 1
+fi
+
+echo "$1" > ~/.display_hostname
+
