@@ -13,6 +13,19 @@ JU_DIR=$HOME/ju
 echo -e "${PURPLE}Installing rc files...${RESET}"
 mkdir -p ~/.bashrc.d
 echo source ${JU_DIR}/jurc > ~/.bashrc.d/ju
+if ! cat ~/.bashrc | grep \.bashrc\.d > /dev/null; then
+  echo "
+# Begin additions for ju
+if [ -d ~/.bashrc.d ]; then
+    for rc in ~/.bashrc.d/*; do
+        if [ -f "$rc" ]; then
+            . "$rc"
+        fi
+    done
+fi
+# End additions for ju
+" >> ~/.bashrc
+fi
 
 [ -f ~/.vimrc ] && mv ~/.vimrc ~/.vimrc.old
 ln -s ${JU_DIR}/.vimrc ~/.vimrc

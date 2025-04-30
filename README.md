@@ -10,17 +10,8 @@ settings and aliases.
         ssh-keygen -t ed25519 -C "<emailaddress>"
         ssh-add ~/.ssh/id_ed25519
   and upload to https://github.com/settings/keys
-- A bashrc that sources all files within `~/.bashrc.d/`, e.g.
 
-        if [ -d ~/.bashrc.d ]; then
-            for rc in ~/.bashrc.d/*; do
-                if [ -f "$rc" ]; then
-                    . "$rc"
-                fi
-            done
-        fi
-
-## Setup 
+## Setup
 
 From your home directory, run:
 
